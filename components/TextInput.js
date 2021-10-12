@@ -21,7 +21,7 @@ class TextInputView extends Component {
       onChangeText,
       placeholder,
       placeholderTextColor,
-      // value,
+      secureTextEntry,
     } = this.props;
     return (
       <TextInput
@@ -37,7 +37,7 @@ class TextInputView extends Component {
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
-        // value={value}
+        secureTextEntry={secureTextEntry}
       />
     );
   }
@@ -58,7 +58,7 @@ TextInputView.propTypes = {
   onChangeText: PropTypes.func,
   placeholder: PropTypes.string,
   placeholderTextColor: PropTypes.string,
-  // value: PropTypes.string,
+  secureTextEntry: PropTypes.bool,
 };
 
 TextInputView.defaultProps = {
@@ -74,5 +74,5 @@ TextInputView.defaultProps = {
   onChangeText: () => {},
   placeholder: '',
   placeholderTextColor: 'lightgray',
-  // value: '',
+  secureTextEntry: false,
 };

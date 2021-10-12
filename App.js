@@ -1,9 +1,9 @@
 import React from 'react';
 import {HomeScreen} from './pages';
-import { LoginScreen } from './pages/Authentications';
+import { LoginScreen, SignupScreen } from './pages/Authentications';
 
 function App(props) {
-  return <LoginScreen />;
+  return <SignupScreen />;
 }
 
 export default App;

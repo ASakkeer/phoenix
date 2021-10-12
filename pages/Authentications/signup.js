@@ -100,7 +100,7 @@ const _styles = StyleSheet.create({
   },
 });
 
-class LoginScreen extends Component {
+class SignupScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -133,8 +133,34 @@ class LoginScreen extends Component {
                 <View style={_styles.__sTS}>
                   <TextInputView
                     style={_styles.__tIC}
-                    placeholder="Phone or email"
+                    placeholder="Name"
+                    // keyboardType="numeric"
+                    onChangeText={text => this.setState({userNumber: text})}
+                    placeholderTextColor="grey"
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onPress={Keyboard.dismiss}
+                accessible={false}>
+                <View style={_styles.__sTS}>
+                  <TextInputView
+                    style={_styles.__tIC}
+                    placeholder="Phone"
                     keyboardType="numeric"
+                    onChangeText={text => this.setState({userNumber: text})}
+                    placeholderTextColor="grey"
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onPress={Keyboard.dismiss}
+                accessible={false}>
+                <View style={_styles.__sTS}>
+                  <TextInputView
+                    style={_styles.__tIC}
+                    placeholder="Email"
+                    // keyboardType="numeric"
                     onChangeText={text => this.setState({userNumber: text})}
                     placeholderTextColor="grey"
                   />
@@ -154,15 +180,6 @@ class LoginScreen extends Component {
                   />
                 </View>
               </TouchableWithoutFeedback>
-              <TouchableOpacity
-                style={{
-                  alignItems: 'flex-end',
-                  marginBottom: 15,
-                }}>
-                <Text style={{textDecorationLine: 'underline', color: 'grey'}}>
-                  Forgot password?
-                </Text>
-              </TouchableOpacity>
               <View>
                 <TouchableOpacity
                   style={{
@@ -174,7 +191,7 @@ class LoginScreen extends Component {
                     width: Dimensions.get('window').width / 1.2,
                     borderRadius: 10,
                   }}>
-                  <Text style={{color: '#fff', fontSize: 16}}>Login</Text>
+                  <Text style={{color: '#fff', fontSize: 16}}>Signup</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -203,39 +220,15 @@ class LoginScreen extends Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{marginRight: 10}}>Don't have an account?</Text>
+            <Text style={{marginRight: 10}}>Already have an account?</Text>
             <TouchableOpacity>
-              <Text style={{color: '#500472'}}>Signup</Text>
+              <Text style={{color: '#500472'}}>Login</Text>
             </TouchableOpacity>
           </View>
-          {/*  <View style={_styles.__iC}>
-          <TouchableWithoutFeedback
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-            <View style={_styles.__sTS}>
-              <TextInputView
-                style={_styles.__tIC}
-                placeholder="Login with phone number"
-                keyboardType="numeric"
-                onChangeText={text => this.setState({userNumber: text})}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={_styles.__aC}>
-          <TouchableOpacity
-            style={_styles.__sBtn}
-            onPress={() => {
-              alert(userNumber);
-              Keyboard.dismiss();
-            }}>
-            <Text style={_styles.__SBtnT}>Sign in</Text>
-          </TouchableOpacity>
-        </View> */}
         </View>
       </SafeAreaView>
     );
   }
 }
 
-export default LoginScreen;
+export default SignupScreen;
