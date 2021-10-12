@@ -3,7 +3,7 @@
 /* eslint-disable no-eval */
 import React, {Component} from 'react';
 import {
-  ImageBackground,
+  SafeAreaView,
   Dimensions,
   Keyboard,
   TouchableWithoutFeedback,
@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
+import {Checkbox} from 'react-native-paper';
 // import BackgoundImg from '../assets/images/BackgoundImg.png';
 // import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 // import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -35,8 +36,8 @@ import {TextInputView, Button} from '../../components';
 const _styles = StyleSheet.create({
   __e_S_C: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
     // backgroundColor: '#500472',
   },
   __tS: {
@@ -114,71 +115,99 @@ class LoginScreen extends Component {
     const GoogleLogo =
       '/Users/viswa/work/testapps/phoenix/assets/images/google-browser.png';
     return (
-      <View style={[_styles.__e_S_C]}>
-        <View style={_styles.__tS}>
-          <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
-        </View>
-        <View>
-          <TouchableWithoutFeedback
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-            <View style={_styles.__sTS}>
-              <TextInputView
-                style={_styles.__tIC}
-                placeholder="Phone or email"
-                keyboardType="numeric"
-                onChangeText={text => this.setState({userNumber: text})}
-                placeholderTextColor="grey"
-              />
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-            <View style={_styles.__sTS}>
-              <TextInputView
-                style={_styles.__tIC}
-                placeholder="Password"
-                keyboardType="numeric"
-                onChangeText={text => this.setState({userNumber: text})}
-                placeholderTextColor="grey"
-              />
-            </View>
-          </TouchableWithoutFeedback>
-          <View>
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#500472',
-                padding: 15,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: Dimensions.get('window').width / 1.2,
-                borderRadius: 10,
-              }}>
-              <Text style={{color: '#fff', fontSize: 16}}>Login</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={{paddingVertical: 20}}>
-          <Text>Or Login With</Text>
-        </View>
-        <View>
-          <Button
+      <SafeAreaView style={[_styles.__e_S_C]}>
+        <View style={[_styles.__e_S_C]}>
+          <View
             style={{
-              backgroundColor: '#db4a39',
-              padding: 15,
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <View style={_styles.__tS}>
+              <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
+            </View>
+            <View>
+              <TouchableWithoutFeedback
+                onPress={Keyboard.dismiss}
+                accessible={false}>
+                <View style={_styles.__sTS}>
+                  <TextInputView
+                    style={_styles.__tIC}
+                    placeholder="Phone or email"
+                    keyboardType="numeric"
+                    onChangeText={text => this.setState({userNumber: text})}
+                    placeholderTextColor="grey"
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onPress={Keyboard.dismiss}
+                accessible={false}>
+                <View style={_styles.__sTS}>
+                  <TextInputView
+                    style={_styles.__tIC}
+                    placeholder="Password"
+                    keyboardType="numeric"
+                    onChangeText={text => this.setState({userNumber: text})}
+                    placeholderTextColor="grey"
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableOpacity
+                style={{
+                  alignItems: 'flex-end',
+                  marginBottom: 15,
+                }}>
+                <Text style={{textDecorationLine: 'underline', color: 'grey'}}>
+                  Forgot password?
+                </Text>
+              </TouchableOpacity>
+              <View>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#500472',
+                    padding: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: Dimensions.get('window').width / 1.2,
+                    borderRadius: 10,
+                  }}>
+                  <Text style={{color: '#fff', fontSize: 16}}>Login</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={{paddingVertical: 20}}>
+              <Text style={{color: 'grey'}}>Or Login With</Text>
+            </View>
+            <View>
+              <Button
+                style={{
+                  backgroundColor: '#db4a39',
+                  padding: 15,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: Dimensions.get('window').width / 1.2,
+                  borderRadius: 10,
+                }}>
+                <Image style={_styles.__sLg} source={{uri: GoogleLogo}} />
+                <Text style={{color: '#fff', fontSize: 16}}>Google</Text>
+              </Button>
+            </View>
+          </View>
+          <View
+            style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
-              width: Dimensions.get('window').width / 1.2,
-              borderRadius: 10,
             }}>
-            <Image style={_styles.__sLg} source={{uri: GoogleLogo}} />
-            <Text style={{color: '#fff', fontSize: 16}}>Google</Text>
-          </Button>
-        </View>
-        {/*  <View style={_styles.__iC}>
+            <Text style={{marginRight: 10}}>Don't have an account?</Text>
+            <TouchableOpacity>
+              <Text style={{color: '#500472'}}>Signup</Text>
+            </TouchableOpacity>
+          </View>
+          {/*  <View style={_styles.__iC}>
           <TouchableWithoutFeedback
             onPress={Keyboard.dismiss}
             accessible={false}>
@@ -202,7 +231,8 @@ class LoginScreen extends Component {
             <Text style={_styles.__SBtnT}>Sign in</Text>
           </TouchableOpacity>
         </View> */}
-      </View>
+        </View>
+      </SafeAreaView>
     );
   }
 }
