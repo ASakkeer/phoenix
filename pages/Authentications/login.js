@@ -12,6 +12,7 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
 import {Checkbox} from 'react-native-paper';
@@ -34,206 +35,135 @@ import {Checkbox} from 'react-native-paper';
 // import {HeaderView} from '../components';
 // Basecolor : #500472   #500472
 const _styles = StyleSheet.create({
-  __e_S_C: {
+  flex: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: '#500472',
   },
-  __tS: {
-    marginBottom: 15,
-  },
-  __tT: {
-    fontSize: 40,
-    color: '#fff',
-  },
-  __sTS: {
-    marginBottom: 25,
-  },
-  __sTT: {
-    fontSize: 16,
-    width: Dimensions.get('window').width / 1.2,
-    alignItems: 'center',
+  titleContainer: {
+    alignItems: 'flex-end',
+    height: 300,
     justifyContent: 'center',
-    textAlign: 'center',
+    // borderWidth: 1,
+    padding: 15,
+  },
+  title: {
+    fontSize: Dimensions.get('window').width / 9,
     color: '#fff',
-  },
-  __tIC: {
-    // backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderColor: 'lightgrey',
-    paddingVertical: 15,
-    // paddingHorizontal: 15,
-    // fontSize: 18,
-    width: Dimensions.get('window').width / 1.2,
-    // borderRadius: 5,
-    color: 'grey',
-  },
-  __sBtn: {
-    width: Dimensions.get('window').width / 1.2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    borderColor: '#fff',
-    borderRadius: 5,
-  },
-  __SBtnT: {
-    fontSize: 18,
-    color: '#fff',
-  },
-  __iC: {
-    // marginBottom: 5,
-  },
-  __p_L_I: {
-    width: 200,
-    height: 50,
-    // borderRadius: 150,
-    // borderWidth: 5,
-    // borderColor: '#fff',
-  },
-  __sLg: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
   },
 });
 
 class LoginScreen extends Component {
   constructor() {
     super();
-    this.state = {
-      userNumber: '',
-    };
+    this.state = {};
   }
 
   render() {
     const {userNumber} = this.state;
-    const TTalk_W =
-      '/Users/viswa/work/testapps/phoenix/assets/images/TTalk_T.png';
-    const GoogleLogo =
-      '/Users/viswa/work/testapps/phoenix/assets/images/google-browser.png';
+    const _backgroundImage = {
+      uri: '/Users/viswa/work/testapps/phoenix/assets/images/AuthBG.png',
+    };
     return (
-      <SafeAreaView style={[_styles.__e_S_C]}>
-        <View style={[_styles.__e_S_C]}>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View style={_styles.__tS}>
-              <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
-            </View>
-            <View>
-              <TouchableWithoutFeedback
-                onPress={Keyboard.dismiss}
-                accessible={false}>
-                <View style={_styles.__sTS}>
-                  <TextInputView
-                    style={_styles.__tIC}
-                    placeholder="Phone or email"
-                    keyboardType="numeric"
-                    onChangeText={text => this.setState({userNumber: text})}
-                    placeholderTextColor="grey"
-                  />
+      <View style={_styles.flex}>
+        <ImageBackground
+          source={_backgroundImage}
+          resizeMode="cover"
+          style={_styles.flex}>
+          <SafeAreaView style={_styles.flex}>
+            <View style={_styles.flex}>
+              <View style={_styles.titleContainer}>
+                <Text style={_styles.title}>Welcome</Text>
+                <Text style={_styles.title}>Back!</Text>
+              </View>
+              <View
+                style={[
+                  _styles.flex,
+                  {
+                    padding: 20,
+                    justifyContent: 'space-between',
+                    paddingVertical: 25,
+                  },
+                ]}>
+                <View>
+                  <View>
+                    <TextInputView
+                      placeholder="Username or email"
+                      maxLength={50}
+                      style={{
+                        paddingVertical: 20,
+                        marginBottom: 15,
+                        borderBottomWidth: 1,
+                        borderColor: 'lightgrey',
+                        fontSize: 16,
+                      }}
+                    />
+                    <TextInputView
+                      placeholder="Password"
+                      maxLength={25}
+                      secureTextEntry
+                      style={{
+                        paddingVertical: 20,
+                        marginBottom: 15,
+                        borderBottomWidth: 1,
+                        borderColor: 'lightgrey',
+                        fontSize: 16,
+                      }}
+                    />
+                  </View>
+                  <TouchableOpacity style={{alignItems: 'flex-end'}}>
+                    <Text>Forgot password?</Text>
+                  </TouchableOpacity>
                 </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback
-                onPress={Keyboard.dismiss}
-                accessible={false}>
-                <View style={_styles.__sTS}>
-                  <TextInputView
-                    style={_styles.__tIC}
-                    placeholder="Password"
-                    // keyboardType="numeric"
-                    onChangeText={text => this.setState({userNumber: text})}
-                    placeholderTextColor="grey"
-                    secureTextEntry={true}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableOpacity
-                style={{
-                  alignItems: 'flex-end',
-                  marginBottom: 15,
-                }}>
-                <Text style={{textDecorationLine: 'underline', color: 'grey'}}>
-                  Forgot password?
-                </Text>
-              </TouchableOpacity>
-              <View>
-                <TouchableOpacity
+                <View
                   style={{
-                    backgroundColor: '#500472',
-                    padding: 15,
-                    flexDirection: 'row',
-                    alignItems: 'center',
+                    position: 'absolute',
+                    bottom: 45,
                     justifyContent: 'center',
-                    width: Dimensions.get('window').width / 1.2,
-                    borderRadius: 10,
+                    // borderWidth: 1,
+                    flex: 1,
+                    left: 0,
+                    right: 0,
+                    alignItems: 'flex-end',
+                    width: '38%',
+                    zIndex: 1,
                   }}>
-                  <Text style={{color: '#fff', fontSize: 16}}>Login</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity style={{alignItems: 'flex-start'}}>
+                    <Text style={{fontSize: 22, color: '#500472'}}>Signup</Text>
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: 15,
+                    justifyContent: 'center',
+                    // borderWidth: 1,
+                    flex: 1,
+                    left: 0,
+                    right: 0,
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: '#500472',
+                      padding: 20,
+                      borderRadius: 100,
+                      width: 80,
+                      height: 80,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      elevation: 1,
+                      shadowRadius: 2,
+                      shadowOpacity: 0.4,
+                      shadowColor: '#000',
+                      shadowOffset: {width: 3, height: 3},
+                    }}>
+                    <Text style={{fontSize: 26, color: '#fff'}}>GO</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
-            <View style={{paddingVertical: 20}}>
-              <Text style={{color: 'grey'}}>Or Login With</Text>
-            </View>
-            <View>
-              <Button
-                style={{
-                  backgroundColor: '#db4a39',
-                  padding: 15,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: Dimensions.get('window').width / 1.2,
-                  borderRadius: 10,
-                }}>
-                <Image style={_styles.__sLg} source={{uri: GoogleLogo}} />
-                <Text style={{color: '#fff', fontSize: 16}}>Google</Text>
-              </Button>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text style={{marginRight: 10}}>Don't have an account?</Text>
-            <TouchableOpacity>
-              <Text style={{color: '#500472'}}>Signup</Text>
-            </TouchableOpacity>
-          </View>
-          {/*  <View style={_styles.__iC}>
-          <TouchableWithoutFeedback
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-            <View style={_styles.__sTS}>
-              <TextInputView
-                style={_styles.__tIC}
-                placeholder="Login with phone number"
-                keyboardType="numeric"
-                onChangeText={text => this.setState({userNumber: text})}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={_styles.__aC}>
-          <TouchableOpacity
-            style={_styles.__sBtn}
-            onPress={() => {
-              alert(userNumber);
-              Keyboard.dismiss();
-            }}>
-            <Text style={_styles.__SBtnT}>Sign in</Text>
-          </TouchableOpacity>
-        </View> */}
-        </View>
-      </SafeAreaView>
+          </SafeAreaView>
+        </ImageBackground>
+      </View>
     );
   }
 }

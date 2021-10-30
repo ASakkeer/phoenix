@@ -3,7 +3,7 @@ import {HomeScreen} from './pages';
 import { LoginScreen, SignupScreen ,ResetPassword,OtpScreen} from './pages/Authentications';
 
 function App(props) {
-   return <OtpScreen/>;
+   return <LoginScreen/>;
     //  return <SignupScreen />;
 
 }
