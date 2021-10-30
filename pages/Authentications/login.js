@@ -7,12 +7,13 @@ import {
   Dimensions,
   Keyboard,
   TouchableWithoutFeedback,
-  Image,
+  ScrollView,
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
 import {Checkbox} from 'react-native-paper';
@@ -40,7 +41,6 @@ const _styles = StyleSheet.create({
   },
   titleContainer: {
     alignItems: 'flex-end',
-    height: 300,
     justifyContent: 'center',
     // borderWidth: 1,
     padding: 15,
@@ -54,116 +54,149 @@ const _styles = StyleSheet.create({
 class LoginScreen extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      isFocused: false,
+    };
   }
 
+  onFocusChange = () => {
+    console.log('fregerg');
+    this.setState({isFocused: true});
+  };
+
+  onBlurChange = () => {
+    console.log('fregerg');
+    this.setState({isFocused: false});
+  };
+
   render() {
-    const {userNumber} = this.state;
+    const {isFocused} = this.state;
     const _backgroundImage = {
       uri: '/Users/viswa/work/testapps/phoenix/assets/images/AuthBG.png',
     };
     return (
-      <View style={_styles.flex}>
-        <ImageBackground
-          source={_backgroundImage}
-          resizeMode="cover"
-          style={_styles.flex}>
-          <SafeAreaView style={_styles.flex}>
-            <View style={_styles.flex}>
-              <View style={_styles.titleContainer}>
-                <Text style={_styles.title}>Welcome</Text>
-                <Text style={_styles.title}>Back!</Text>
-              </View>
-              <View
-                style={[
-                  _styles.flex,
-                  {
-                    padding: 20,
-                    justifyContent: 'space-between',
-                    paddingVertical: 25,
-                  },
-                ]}>
-                <View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={_styles.flex}>
+        <ScrollView contentContainerStyle={_styles.flex}>
+          <ImageBackground
+            source={_backgroundImage}
+            resizeMode="cover"
+            style={_styles.flex}>
+            <SafeAreaView style={_styles.flex}>
+              <View style={_styles.flex}>
+                <View
+                  style={[
+                    _styles.titleContainer,
+                    {height: isFocused ? 100 : 300},
+                  ]}>
+                  <Text style={_styles.title}>Welcome</Text>
+                  <Text style={_styles.title}>Back!</Text>
+                </View>
+                <View
+                  style={[
+                    _styles.flex,
+                    {
+                      paddingHorizontal: 20,
+                      paddingVertical: isFocused ? 10 : 20,
+                      justifyContent: isFocused ? 'center' : 'space-between',
+                    },
+                  ]}>
                   <View>
-                    <TextInputView
-                      placeholder="Username or email"
-                      maxLength={50}
-                      style={{
-                        paddingVertical: 20,
-                        marginBottom: 15,
-                        borderBottomWidth: 1,
-                        borderColor: 'lightgrey',
-                        fontSize: 16,
-                      }}
-                    />
-                    <TextInputView
-                      placeholder="Password"
-                      maxLength={25}
-                      secureTextEntry
-                      style={{
-                        paddingVertical: 20,
-                        marginBottom: 15,
-                        borderBottomWidth: 1,
-                        borderColor: 'lightgrey',
-                        fontSize: 16,
-                      }}
-                    />
+                    <View>
+                      <TextInputView
+                        placeholder="Username or email"
+                        maxLength={50}
+                        style={{
+                          paddingVertical: 20,
+                          marginBottom: 15,
+                          borderBottomWidth: 1,
+                          borderColor: 'lightgrey',
+                          fontSize: 16,
+                        }}
+                        onFocus={this.onFocusChange}
+                        onBlur={this.onBlurChange}
+                      />
+                      <TextInputView
+                        placeholder="Password"
+                        maxLength={25}
+                        secureTextEntry
+                        style={{
+                          paddingVertical: 20,
+                          marginBottom: 15,
+                          borderBottomWidth: 1,
+                          borderColor: 'lightgrey',
+                          fontSize: 16,
+                        }}
+                        onFocus={this.onFocusChange}
+                        onBlur={this.onBlurChange}
+                      />
+                    </View>
+                    <TouchableOpacity style={{alignItems: 'flex-end'}}>
+                      <Text>Forgot password?</Text>
+                    </TouchableOpacity>
                   </View>
-                  <TouchableOpacity style={{alignItems: 'flex-end'}}>
-                    <Text>Forgot password?</Text>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    position: 'absolute',
-                    bottom: 45,
-                    justifyContent: 'center',
-                    // borderWidth: 1,
-                    flex: 1,
-                    left: 0,
-                    right: 0,
-                    alignItems: 'flex-end',
-                    width: '38%',
-                    zIndex: 1,
-                  }}>
-                  <TouchableOpacity style={{alignItems: 'flex-start'}}>
-                    <Text style={{fontSize: 22, color: '#500472'}}>Signup</Text>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    position: 'absolute',
-                    bottom: 15,
-                    justifyContent: 'center',
-                    // borderWidth: 1,
-                    flex: 1,
-                    left: 0,
-                    right: 0,
-                    alignItems: 'center',
-                  }}>
-                  <TouchableOpacity
+                  <View
                     style={{
-                      backgroundColor: '#500472',
-                      padding: 20,
-                      borderRadius: 100,
-                      width: 80,
-                      height: 80,
-                      alignItems: 'center',
+                      position: 'absolute',
+                      bottom: isFocused ? 40 : 45,
                       justifyContent: 'center',
-                      elevation: 1,
-                      shadowRadius: 2,
-                      shadowOpacity: 0.4,
-                      shadowColor: '#000',
-                      shadowOffset: {width: 3, height: 3},
+                      // borderWidth: 1,
+                      flex: 1,
+                      left: 0,
+                      right: 0,
+                      alignItems: 'flex-end',
+                      width: '38%',
+                      zIndex: 1,
                     }}>
-                    <Text style={{fontSize: 26, color: '#fff'}}>GO</Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity style={{alignItems: 'flex-start'}}>
+                      <Text
+                        style={{
+                          fontSize: isFocused ? 18 : 22,
+                          color: '#500472',
+                        }}>
+                        Signup
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View
+                    style={{
+                      position: 'absolute',
+                      bottom: 15,
+                      justifyContent: 'center',
+                      // borderWidth: 1,
+                      flex: 1,
+                      left: 0,
+                      right: 0,
+                      alignItems: 'center',
+                    }}>
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: '#500472',
+                        padding: 20,
+                        borderRadius: 100,
+                        width: isFocused ? 70 : 80,
+                        height: isFocused ? 70 : 80,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        elevation: 1,
+                        shadowRadius: 2,
+                        shadowOpacity: 0.4,
+                        shadowColor: '#000',
+                        shadowOffset: {width: 3, height: 3},
+                      }}>
+                      <Text
+                        style={{fontSize: isFocused ? 20 : 26, color: '#fff'}}>
+                        GO
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
-            </View>
-          </SafeAreaView>
-        </ImageBackground>
-      </View>
+            </SafeAreaView>
+          </ImageBackground>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

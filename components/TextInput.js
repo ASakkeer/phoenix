@@ -22,6 +22,7 @@ class TextInputView extends Component {
       placeholder,
       placeholderTextColor,
       secureTextEntry,
+      onFocus,
     } = this.props;
     return (
       <TextInput
@@ -38,6 +39,7 @@ class TextInputView extends Component {
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
         secureTextEntry={secureTextEntry}
+        onFocus={onFocus}
       />
     );
   }
@@ -56,6 +58,7 @@ TextInputView.propTypes = {
   multiline: PropTypes.bool,
   onBlur: PropTypes.func,
   onChangeText: PropTypes.func,
+  onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   placeholderTextColor: PropTypes.string,
   secureTextEntry: PropTypes.bool,
@@ -72,6 +75,7 @@ TextInputView.defaultProps = {
   multiline: false,
   onBlur: () => {},
   onChangeText: () => {},
+  onFocus: () => {},
   placeholder: '',
   placeholderTextColor: 'lightgray',
   secureTextEntry: false,
