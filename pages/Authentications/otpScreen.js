@@ -127,10 +127,20 @@ class OtpScreen extends Component {
               <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
             </View>
             <View>
-            <Text style={{color: '#808080', fontSize: 14,marginTop:20,}}>Please enter the OTP send to </Text>
+              <Text style={{color: '#808080', fontSize: 14, marginTop: 20}}>
+                Please enter the OTP send to{' '}
+              </Text>
             </View>
             <View>
-            <Text style={{color: '#808080', fontSize: 14,marginTop:5,marginBottom:30}}>8870273579 . change</Text>
+              <Text
+                style={{
+                  color: '#808080',
+                  fontSize: 14,
+                  marginTop: 5,
+                  marginBottom: 30,
+                }}>
+                8870273579 . change
+              </Text>
             </View>
             <View>
               <TouchableWithoutFeedback
@@ -146,14 +156,12 @@ class OtpScreen extends Component {
                   />
                 </View>
               </TouchableWithoutFeedback>
-              
+
               <TouchableOpacity
                 style={{
                   alignItems: 'flex-end',
                   marginBottom: 15,
-                }}>
-               
-              </TouchableOpacity>
+                }}></TouchableOpacity>
               <View>
                 <TouchableOpacity
                   style={{
@@ -169,18 +177,13 @@ class OtpScreen extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-            
-        
           </View>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
-           
-         
-          </View>
+            }}></View>
           {/*  <View style={_styles.__iC}>
           <TouchableWithoutFeedback
             onPress={Keyboard.dismiss}

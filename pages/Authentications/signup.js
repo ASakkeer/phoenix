@@ -34,6 +34,8 @@ import {Checkbox} from 'react-native-paper';
 // import ZocialIcon from 'react-native-vector-icons/Zocial';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
+import {Actions} from 'react-native-router-flux';
+
 // import {HeaderView} from '../components';
 // Basecolor : #500472   #500472
 const _styles = StyleSheet.create({
@@ -177,7 +179,9 @@ class SignupScreen extends Component {
                       width: '38%',
                       zIndex: 1,
                     }}>
-                    <TouchableOpacity style={{alignItems: 'flex-start'}}>
+                    <TouchableOpacity
+                      style={{alignItems: 'flex-start'}}
+                      onPress={() => Actions.Login()}>
                       <Text
                         style={{
                           fontSize: isFocused ? 18 : 22,

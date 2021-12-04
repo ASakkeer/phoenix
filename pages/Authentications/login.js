@@ -17,6 +17,9 @@ import {
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
 import {Checkbox} from 'react-native-paper';
+
+import {Actions} from 'react-native-router-flux';
+
 // import BackgoundImg from '../assets/images/BackgoundImg.png';
 // import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 // import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -132,7 +135,9 @@ class LoginScreen extends Component {
                         onBlur={this.onBlurChange}
                       />
                     </View>
-                    <TouchableOpacity style={{alignItems: 'flex-end'}}>
+                    <TouchableOpacity
+                      style={{alignItems: 'flex-end'}}
+                      onPress={() => Actions.Reset()}>
                       <Text>Forgot password?</Text>
                     </TouchableOpacity>
                   </View>
@@ -149,7 +154,9 @@ class LoginScreen extends Component {
                       width: '38%',
                       zIndex: 1,
                     }}>
-                    <TouchableOpacity style={{alignItems: 'flex-start'}}>
+                    <TouchableOpacity
+                      style={{alignItems: 'flex-start'}}
+                      onPress={() => Actions.Register()}>
                       <Text
                         style={{
                           fontSize: isFocused ? 18 : 22,
