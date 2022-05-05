@@ -37,7 +37,7 @@ import {Actions} from 'react-native-router-flux';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
 // import {HeaderView} from '../components';
-// Basecolor : #500472   #500472
+// Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   flex: {
     flex: 1,
@@ -160,7 +160,7 @@ class LoginScreen extends Component {
                       <Text
                         style={{
                           fontSize: isFocused ? 18 : 22,
-                          color: '#500472',
+                          color: '#4a6076',
                         }}>
                         Signup
                       </Text>
@@ -179,7 +179,7 @@ class LoginScreen extends Component {
                     }}>
                     <TouchableOpacity
                       style={{
-                        backgroundColor: '#500472',
+                        backgroundColor: '#4a6076',
                         padding: 20,
                         borderRadius: 100,
                         width: isFocused ? 70 : 80,
@@ -191,7 +191,8 @@ class LoginScreen extends Component {
                         shadowOpacity: 0.4,
                         shadowColor: '#000',
                         shadowOffset: {width: 3, height: 3},
-                      }}>
+                      }}
+                      onPress={() => Actions.HomeScreen()}>
                       <Text
                         style={{fontSize: isFocused ? 20 : 26, color: '#fff'}}>
                         GO

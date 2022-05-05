@@ -8,16 +8,21 @@ import {
   OtpScreen,
 } from './pages/Authentications';
 
+import {HomeScreen} from './pages';
+
 import {Router, Stack, Scene} from 'react-native-router-flux';
+console.reportErrorsAsExceptions = false;
 
 class App extends Component {
   render() {
     return (
       <>
         <Router>
-          <Scene key="root" navigationOptions={{
-            headerShown: false
-          }}>
+          <Scene
+            key="root"
+            navigationOptions={{
+              headerShown: false,
+            }}>
             <Scene
               key="Login"
               component={LoginScreen}
@@ -40,6 +45,12 @@ class App extends Component {
               key="OtpScreen"
               component={OtpScreen}
               title="Otp"
+              hideNavBar={true}
+            />
+            <Scene
+              key="HomeScreen"
+              component={HomeScreen}
+              title="Home"
               hideNavBar={true}
             />
           </Scene>

@@ -37,7 +37,7 @@ import {Actions} from 'react-native-router-flux';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
 // import {HeaderView} from '../components';
-// Basecolor : #500472   #500472
+// Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   flex: {
     flex: 1,
@@ -141,7 +141,7 @@ class ResetPassword extends Component {
                       <Text
                         style={{
                           fontSize: isFocused ? 18 : 22,
-                          color: '#500472',
+                          color: '#4a6076',
                         }}>
                         Login
                       </Text>
@@ -160,7 +160,7 @@ class ResetPassword extends Component {
                     }}>
                     <TouchableOpacity
                       style={{
-                        backgroundColor: '#500472',
+                        backgroundColor: '#4a6076',
                         padding: 20,
                         borderRadius: 100,
                         width: isFocused ? 70 : 80,

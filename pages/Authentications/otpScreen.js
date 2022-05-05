@@ -32,13 +32,13 @@ import {Checkbox} from 'react-native-paper';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
 // import {HeaderView} from '../components';
-// Basecolor : #500472   #500472
+// Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   __e_S_C: {
     flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center',
-    // backgroundColor: '#500472',
+    // backgroundColor: '#4a6076',
   },
   __tS: {
     marginBottom: 15,
@@ -111,9 +111,9 @@ class OtpScreen extends Component {
   render() {
     const {userNumber} = this.state;
     const TTalk_W =
-      '/Users/navinanda/work/application/phoenix/assets/images/TTalk_T.png';
+      '/Users/viswa/work/testapps/phoenix/assets/images/TTalk_T.png';
     const GoogleLogo =
-      '/Users/navinanda/work/application/phoenix/assets/images/google-browser.png';
+      '/Users/viswa/work/testapps/phoenix/assets/images/google-browser.png';
     return (
       <SafeAreaView style={[_styles.__e_S_C]}>
         <View style={[_styles.__e_S_C]}>
@@ -165,7 +165,7 @@ class OtpScreen extends Component {
               <View>
                 <TouchableOpacity
                   style={{
-                    backgroundColor: '#500472',
+                    backgroundColor: '#4a6076',
                     padding: 15,
                     flexDirection: 'row',
                     alignItems: 'center',

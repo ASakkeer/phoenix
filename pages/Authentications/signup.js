@@ -37,7 +37,7 @@ import {Checkbox} from 'react-native-paper';
 import {Actions} from 'react-native-router-flux';
 
 // import {HeaderView} from '../components';
-// Basecolor : #500472   #500472
+// Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   flex: {
     flex: 1,
@@ -185,7 +185,7 @@ class SignupScreen extends Component {
                       <Text
                         style={{
                           fontSize: isFocused ? 18 : 22,
-                          color: '#500472',
+                          color: '#4a6076',
                         }}>
                         Login
                       </Text>
@@ -204,7 +204,7 @@ class SignupScreen extends Component {
                     }}>
                     <TouchableOpacity
                       style={{
-                        backgroundColor: '#500472',
+                        backgroundColor: '#4a6076',
                         padding: 20,
                         borderRadius: 100,
                         width: isFocused ? 70 : 80,

@@ -27,7 +27,7 @@ class HeaderView extends Component {
   renderNavIcons = () => {
     const {_navIconsColor} = this.props;
     const {_navIconList} = this.state;
-    return _navIconList.map((data) => {
+    return _navIconList.map(data => {
       if (!data.active) {
         return true;
       }
@@ -90,7 +90,7 @@ HeaderView.defaultProps = {
   _navTitle: '',
   _navSubTitle: '',
   _navEnableBackHandler: false,
-  _navBgStyle: {backgroundColor: '#500472'},
+  _navBgStyle: {backgroundColor: '#4a6076'},
   _navTitleStyle: {fontSize: 24, color: '#fff'},
   _navSubTitleStyle: {},
   _navBackActionColor: '#000',

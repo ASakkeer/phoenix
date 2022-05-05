@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/core": "github:react-navigation/core",
     "react": "17.0.2",
     "react-native": "0.66.0",
     "react-native-gesture-handler": "^1.10.3",
