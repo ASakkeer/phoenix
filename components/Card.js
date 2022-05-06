@@ -1,7 +1,16 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import {Rating} from 'react-native-ratings';
+
+import {MaterialCommunityIcon} from './Icons';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -47,6 +56,10 @@ const _styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
   },
+  __icon: {
+    paddingVertical: 5,
+    paddingHorizontal: 7,
+  },
 });
 
 function CardView(props) {
@@ -87,6 +100,40 @@ function CardView(props) {
               : null,
         }}
       />
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#fff',
+          shadowColor: '#adadad',
+          shadowOpacity: 0.2,
+          shadowOffset: {width: 0, height: 0},
+          shadowRadius: 3,
+          elevation: 3,
+          borderRadius: 100,
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 35,
+          height: 35,
+          position: 'absolute',
+          bottom: 5,
+          right: 5,
+        }}>
+        {!itemDetails?.isInWishlist && (
+          <MaterialCommunityIcon
+            style={{}}
+            name="heart-outline"
+            color="#4a6076"
+            size={22}
+          />
+        )}
+        {itemDetails?.isInWishlist && (
+          <MaterialCommunityIcon
+            style={{}}
+            name="heart"
+            color="#4a6076"
+            size={22}
+          />
+        )}
+      </TouchableOpacity>
     </View>
   );
 
