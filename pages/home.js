@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, SafeAreaView, View, FlatList} from 'react-native';
 
-import {NavbarView, CardView} from '../components';
+import {NavbarView, CardView, FilterCard} from '../components';
 import categoryList from './jsonData/categoryList.json';
 
 function HomeScreen() {
@@ -16,6 +16,7 @@ function HomeScreen() {
     <View style={{backgroundColor: '#fff', flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
         <NavbarView _isLogo={true} />
+        <FilterCard />
         <View style={{flex: 1}}>
           <FlatList
             data={DATA}

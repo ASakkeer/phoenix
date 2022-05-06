@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
 import PropTypes from 'prop-types';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {Rating} from 'react-native-ratings';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
