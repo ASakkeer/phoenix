@@ -3,20 +3,23 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 
 import {IoniconsIcon} from './Icons';
+import SearchInputView from './SearchInput';
 
 const _styles = StyleSheet.create({
   __tS: {
     backgroundColor: '#fff',
     paddingVertical: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     paddingHorizontal: 5,
     shadowColor: '#adadad',
     shadowOpacity: 0.2,
     shadowOffset: {width: 0, height: 5},
     shadowRadius: 3,
     elevation: 3,
+  },
+  __tSc: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   __p_L_I: {
     width: 120,
@@ -28,7 +31,8 @@ const _styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   __icon: {
-    padding: 5,
+    paddingVertical: 5,
+    paddingHorizontal: 7,
   },
 });
 
@@ -73,19 +77,66 @@ function NavbarView(props) {
 
   return (
     <View style={_styles.__tS}>
-      <View>
-        {_isLogo && <Image style={_styles.__p_L_I} source={{uri: _logo}} />}
+      <View style={_styles.__tSc}>
+        <View>
+          {_isLogo && <Image style={_styles.__p_L_I} source={{uri: _logo}} />}
+        </View>
+        <View style={_styles.__centerAligned}>
+          {_renderIcons(
+            () => {},
+            'notifications-outline',
+            24,
+            '#4a6076',
+            _styles.__icon,
+          )}
+          {_renderIcons(
+            () => {},
+            'heart-outline',
+            24,
+            '#4a6076',
+            _styles.__icon,
+          )}
+          {_renderIcons(
+            () => {},
+            'cart-outline',
+            26,
+            '#4a6076',
+            _styles.__icon,
+          )}
+        </View>
       </View>
-      <View style={_styles.__centerAligned}>
-        {_renderIcons(
-          () => {},
-          'notifications-outline',
-          22,
-          '#4a6076',
-          _styles.__icon,
-        )}
-        {_renderIcons(() => {}, 'heart-outline', 22, '#4a6076', _styles.__icon)}
-        {_renderIcons(() => {}, 'cart-outline', 24, '#4a6076', _styles.__icon)}
+      <View style={{marginTop: 15}}>
+        <SearchInputView
+          placeholder="Just one tap to search"
+          maxLength={50}
+          style={{
+            paddingVertical: 10,
+            borderWidth: 1,
+            borderColor: 'lightgrey',
+            fontSize: 16,
+            borderRadius: 100,
+            paddingHorizontal: 20,
+            height: 45,
+          }}
+        />
+        <View
+          style={{
+            position: 'absolute',
+            right: 0,
+            backgroundColor: '#4a6076',
+            borderTopRightRadius: 100,
+            borderBottomRightRadius: 100,
+            paddingVertical: 5,
+            paddingHorizontal: 5,
+            height: 45,
+          }}>
+          <IoniconsIcon
+            style={_styles.__icon}
+            name="search-outline"
+            color="#fff"
+            size={22}
+          />
+        </View>
       </View>
     </View>
   );

@@ -36,7 +36,6 @@ import {Checkbox} from 'react-native-paper';
 
 import {Actions} from 'react-native-router-flux';
 
-// import {HeaderView} from '../components';
 // Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   flex: {

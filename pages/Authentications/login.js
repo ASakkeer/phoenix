@@ -36,7 +36,6 @@ import {Actions} from 'react-native-router-flux';
 // import ZocialIcon from 'react-native-vector-icons/Zocial';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
-// import {HeaderView} from '../components';
 // Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   flex: {
