@@ -8,6 +8,8 @@ import {
   OtpScreen,
 } from './pages/Authentications';
 
+import {CategoryDetails} from './pages/category';
+
 import {HomeScreen} from './pages';
 
 import {Router, Stack, Scene} from 'react-native-router-flux';
@@ -51,6 +53,12 @@ class App extends Component {
               key="HomeScreen"
               component={HomeScreen}
               title="Home"
+              hideNavBar={true}
+            />
+            <Scene
+              key="CategoryDetails"
+              component={CategoryDetails}
+              title="Category Details"
               hideNavBar={true}
             />
           </Scene>

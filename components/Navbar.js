@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-
+import {Actions} from 'react-native-router-flux';
 import {IoniconsIcon} from './Icons';
 import SearchInputView from './SearchInput';
 
@@ -25,6 +25,11 @@ const _styles = StyleSheet.create({
     width: 120,
     height: 40,
   },
+  __b_A: {
+    width: 20,
+    height: 20,
+    right: 2,
+  },
   __centerAligned: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -37,9 +42,11 @@ const _styles = StyleSheet.create({
 });
 
 function NavbarView(props) {
-  const {_isLogo} = props;
+  const {_isLogo, _isSearch, _isBackArrow} = props;
 
   const _logo = '/Users/viswa/work/testapps/phoenix/assets/images/logo.png';
+  const _backArrow =
+    '/Users/viswa/work/testapps/phoenix/assets/images/left-arrow.png';
 
   _renderIcons = (onPress, icon, size, color, style) => {
     return (
@@ -78,7 +85,32 @@ function NavbarView(props) {
   return (
     <View style={_styles.__tS}>
       <View style={_styles.__tSc}>
-        <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+          {_isBackArrow && (
+            <TouchableOpacity
+              onPress={() => Actions.pop()}
+              style={{
+                backgroundColor: '#fff',
+                shadowColor: '#adadad',
+                shadowOpacity: 0.2,
+                shadowOffset: {width: 0, height: 0},
+                shadowRadius: 3,
+                elevation: 3,
+                borderRadius: 100,
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 35,
+                height: 35,
+                zIndex: 1,
+                marginRight: 5,
+              }}>
+              <Image style={_styles.__b_A} source={{uri: _backArrow}} />
+            </TouchableOpacity>
+          )}
           {_isLogo && <Image style={_styles.__p_L_I} source={{uri: _logo}} />}
         </View>
         <View style={_styles.__centerAligned}>
@@ -105,40 +137,42 @@ function NavbarView(props) {
           )}
         </View>
       </View>
-      <View style={{marginTop: 15, backgroundColor: '#F9F9F9'}}>
-        <SearchInputView
-          placeholder="Just one tap to search"
-          maxLength={50}
-          style={{
-            paddingVertical: 10,
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            fontSize: 16,
-            borderRadius: 100,
-            paddingHorizontal: 20,
-            height: 45,
-            backgroundColor: '#F9F9F9',
-          }}
-        />
-        <View
-          style={{
-            position: 'absolute',
-            right: 0,
-            backgroundColor: '#4a6076',
-            borderTopRightRadius: 100,
-            borderBottomRightRadius: 100,
-            paddingVertical: 5,
-            paddingHorizontal: 5,
-            height: 45,
-          }}>
-          <IoniconsIcon
-            style={_styles.__icon}
-            name="search-outline"
-            color="#F9F9F9"
-            size={22}
+      {_isSearch && (
+        <View style={{marginTop: 15, backgroundColor: '#F9F9F9'}}>
+          <SearchInputView
+            placeholder="Just one tap to search"
+            maxLength={50}
+            style={{
+              paddingVertical: 10,
+              borderWidth: 1,
+              borderColor: 'lightgrey',
+              fontSize: 16,
+              borderRadius: 100,
+              paddingHorizontal: 20,
+              height: 45,
+              backgroundColor: '#F9F9F9',
+            }}
           />
+          <View
+            style={{
+              position: 'absolute',
+              right: 0,
+              backgroundColor: '#4a6076',
+              borderTopRightRadius: 100,
+              borderBottomRightRadius: 100,
+              paddingVertical: 5,
+              paddingHorizontal: 5,
+              height: 45,
+            }}>
+            <IoniconsIcon
+              style={_styles.__icon}
+              name="search-outline"
+              color="#F9F9F9"
+              size={22}
+            />
+          </View>
         </View>
-      </View>
+      )}
     </View>
   );
 }
@@ -147,8 +181,12 @@ export default NavbarView;
 
 NavbarView.propTypes = {
   _isLogo: PropTypes.bool,
+  _isSearch: PropTypes.bool,
+  _isBackArrow: PropTypes.bool,
 };
 
 NavbarView.defaultProps = {
   _isLogo: false,
+  _isSearch: false,
+  _isBackArrow: false,
 };

@@ -20,9 +20,9 @@ function HomeScreen() {
     return <CardView itemDetails={item} />;
   };
 
-  // updateSortFilterValue = value => {
-  //   updateSort(value);
-  // };
+  updateSortFilterValue = value => {
+    updateSort(value);
+  };
 
   // const sortFilter = () => (
   //   <ModalView
@@ -59,7 +59,7 @@ function HomeScreen() {
   return (
     <View style={{backgroundColor: '#F9F9F9', flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
-        <NavbarView _isLogo={true} />
+        <NavbarView _isLogo={true} _isSearch={true} _isBackArrow={false} />
         <FilterCard updateSortFilterValue={updateSortFilterValue} />
         <View style={{flex: 1}}>
           <Text

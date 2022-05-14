@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import {Rating} from 'react-native-ratings';
 
 import {MaterialCommunityIcon} from './Icons';
+import {Actions} from 'react-native-router-flux';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -119,11 +120,6 @@ function CardView(props) {
             position: 'absolute',
             top: 5,
             left: 5,
-            shadowColor: '#adadad',
-            shadowOpacity: 0.2,
-            shadowOffset: {width: 0, height: 5},
-            shadowRadius: 3,
-            elevation: 3,
           }}>
           <Text style={_styles.discountLabel}>{itemDetails?.discount}</Text>
         </View>
@@ -258,7 +254,10 @@ function CardView(props) {
   );
 
   return (
-    <TouchableOpacity style={_styles.container} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={_styles.container}
+      activeOpacity={0.8}
+      onPress={() => Actions.CategoryDetails({itemDetails: itemDetails})}>
       {_renderImageContainer()}
       <View style={{padding: 10}}>
         {_renderAddButtonContainer()}
