@@ -68,7 +68,7 @@ function CategoryDetails(props) {
       style={{
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginBottom: 15,
+        marginBottom: 10,
       }}>
       {itemDetails?.size.map(eachSize => (
         <View
@@ -188,7 +188,7 @@ function CategoryDetails(props) {
                 shadowRadius: 3,
                 elevation: 3,
                 borderRadius: 7,
-                marginBottom: 15,
+                marginBottom: 10,
               }}>
               <View>
                 <Text style={_styles.title} numberOfLines={1}>
@@ -218,6 +218,21 @@ function CategoryDetails(props) {
               {/* Size UI start */}
               {itemDetails?.size.length > 0 && _renderSizeContainer()}
               {/* Size UI end */}
+
+              {itemDetails?.shippingFreeAvailable && (
+                <View
+                  style={{
+                    marginBottom: 10,
+                    backgroundColor: '#03A651',
+                    padding: 3,
+                    borderRadius: 100,
+                    width: 110,
+                    alignItems: 'center',
+                  }}>
+                  <Text style={{color: '#fff'}}>Free Delivery</Text>
+                </View>
+              )}
+
               <View
                 style={{
                   flex: 1,
@@ -267,8 +282,9 @@ function CategoryDetails(props) {
               marginRight: 5,
               alignItems: 'center',
               justifyContent: 'center',
+              backgroundColor: '#FEFFA3',
             }}>
-            <Text style={{fontSize: 16}}>Add To Cart</Text>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>Add To Cart</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -286,7 +302,9 @@ function CategoryDetails(props) {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{fontSize: 16, color: '#fff'}}>Buy Now</Text>
+            <Text style={{fontSize: 16, color: '#fff', fontWeight: 'bold'}}>
+              Buy Now
+            </Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
