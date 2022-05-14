@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {MaterialCommunityIcon} from './Icons';
@@ -10,16 +10,17 @@ const _styles = StyleSheet.create({
   },
 });
 
-function FilterCard() {
+function FilterCard(props) {
+  const {updateSortFilterValue} = props;
   return (
     <View
       style={{
         flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: '#F2F2F2',
+        // borderWidth: 1,
+        // borderColor: '#F2F2F2',
         marginTop: 10,
         margin: 5,
-        borderRadius: 3,
+        borderRadius: 7,
       }}>
       <TouchableOpacity
         style={{
@@ -28,9 +29,18 @@ function FilterCard() {
           justifyContent: 'center',
           flexDirection: 'row',
           padding: 5,
-          borderRightWidth: 1,
-          borderColor: '#F2F2F2',
-        }}>
+          // borderRightWidth: 1,
+          // borderColor: '#F2F2F2',
+          marginRight: 5,
+          backgroundColor: '#fff',
+          shadowColor: '#adadad',
+          shadowOpacity: 0.2,
+          shadowOffset: {width: 0, height: 0},
+          shadowRadius: 3,
+          elevation: 3,
+          borderRadius: 7,
+        }}
+        onPress={() => updateSortFilterValue(true)}>
         <MaterialCommunityIcon
           style={_styles.__icon}
           name="sort"
@@ -60,8 +70,16 @@ function FilterCard() {
           justifyContent: 'center',
           flexDirection: 'row',
           padding: 5,
-          borderLeftWidth: 1,
-          borderColor: '#F2F2F2',
+          // borderRightWidth: 1,
+          // borderColor: '#F2F2F2',
+          marginLeft: 5,
+          backgroundColor: '#fff',
+          shadowColor: '#adadad',
+          shadowOpacity: 0.2,
+          shadowOffset: {width: 0, height: 0},
+          shadowRadius: 3,
+          elevation: 3,
+          borderRadius: 7,
         }}>
         <MaterialCommunityIcon
           style={_styles.__icon}
@@ -91,6 +109,10 @@ function FilterCard() {
 
 export default FilterCard;
 
-FilterCard.propTypes = {};
+FilterCard.propTypes = {
+  updateSortFilterValue: PropTypes.func,
+};
 
-FilterCard.defaultProps = {};
+FilterCard.defaultProps = {
+  updateSortFilterValue: () => {},
+};

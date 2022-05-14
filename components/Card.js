@@ -19,9 +19,10 @@ const _styles = StyleSheet.create({
   container: {
     flex: 0.5,
     borderWidth: 1,
-    margin: 3,
+    margin: 5,
     borderColor: '#F2F2F2',
-    borderRadius: 3,
+    borderRadius: 7,
+    backgroundColor: '#fff',
   },
   __p_L_I: {
     width: windowWidth / 2 - 15,
@@ -54,7 +55,8 @@ const _styles = StyleSheet.create({
   discountLabel: {
     color: '#4a6076',
     fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: 10,
+    textAlign: 'center',
   },
   __icon: {
     paddingVertical: 5,
@@ -100,6 +102,32 @@ function CardView(props) {
               : null,
         }}
       />
+      {!!itemDetails?.discount && (
+        <View
+          style={{
+            backgroundColor: '#fff',
+            shadowColor: '#adadad',
+            shadowOpacity: 0.2,
+            shadowOffset: {width: 0, height: 0},
+            shadowRadius: 3,
+            elevation: 3,
+            borderRadius: 100,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 35,
+            height: 35,
+            position: 'absolute',
+            top: 5,
+            left: 5,
+            shadowColor: '#adadad',
+            shadowOpacity: 0.2,
+            shadowOffset: {width: 0, height: 5},
+            shadowRadius: 3,
+            elevation: 3,
+          }}>
+          <Text style={_styles.discountLabel}>{itemDetails?.discount}</Text>
+        </View>
+      )}
       <TouchableOpacity
         style={{
           backgroundColor: '#fff',
@@ -114,7 +142,7 @@ function CardView(props) {
           width: 35,
           height: 35,
           position: 'absolute',
-          bottom: 5,
+          top: 5,
           right: 5,
         }}>
         {!itemDetails?.isInWishlist && (
@@ -129,7 +157,7 @@ function CardView(props) {
           <MaterialCommunityIcon
             style={{}}
             name="heart"
-            color="#4a6076"
+            color="red"
             size={22}
           />
         )}
@@ -170,7 +198,6 @@ function CardView(props) {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        marginBottom: 10,
       }}>
       <Rating
         onFinishRating={() => {}}
@@ -197,29 +224,53 @@ function CardView(props) {
         flexDirection: 'row',
         // justifyContent: 'space-between',
         alignItems: 'center',
+        marginBottom: 10,
       }}>
       <Text style={_styles.currentPriceLabel}>
         <Text style={{fontSize: 12}}>{'₹'}</Text>
         {itemDetails?.currentPrice}
       </Text>
       <Text style={_styles.pastPriceLabel}>{itemDetails?.pastPrice}</Text>
-      <Text style={_styles.discountLabel}>{itemDetails?.discount} off</Text>
     </View>
   );
 
+  _renderAddButtonContainer = () => (
+    <TouchableOpacity
+      style={{
+        backgroundColor: '#4a6076',
+        shadowColor: '#adadad',
+        shadowOpacity: 0.2,
+        shadowOffset: {width: 0, height: 0},
+        shadowRadius: 3,
+        elevation: 3,
+        borderRadius: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 35,
+        height: 35,
+        position: 'absolute',
+        bottom: 5,
+        right: 5,
+        zIndex: 1,
+      }}>
+      <MaterialCommunityIcon style={{}} name="plus" color="#fff" size={22} />
+    </TouchableOpacity>
+  );
+
   return (
-    <View style={_styles.container}>
+    <TouchableOpacity style={_styles.container} activeOpacity={0.8}>
       {_renderImageContainer()}
       <View style={{padding: 10}}>
+        {_renderAddButtonContainer()}
         {_renderBranchContainer()}
         {_renderProductContainer()}
         {/* Size UI start */}
         {/* {itemDetails?.size.length > 0 && _renderSizeContainer()} */}
         {/* Size UI end */}
-        {_renderRatingContainer()}
         {_renderPriceContainer()}
+        {_renderRatingContainer()}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

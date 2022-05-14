@@ -7,7 +7,7 @@ import SearchInputView from './SearchInput';
 
 const _styles = StyleSheet.create({
   __tS: {
-    backgroundColor: '#fff',
+    backgroundColor: '#F9F9F9',
     paddingVertical: 10,
     paddingHorizontal: 5,
     shadowColor: '#adadad',
@@ -69,7 +69,7 @@ function NavbarView(props) {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{fontSize: 12, color: '#fff'}}>4</Text>
+          <Text style={{fontSize: 12, color: '#F9F9F9'}}>4</Text>
         </View>
       </TouchableOpacity>
     );
@@ -105,7 +105,7 @@ function NavbarView(props) {
           )}
         </View>
       </View>
-      <View style={{marginTop: 15}}>
+      <View style={{marginTop: 15, backgroundColor: '#F9F9F9'}}>
         <SearchInputView
           placeholder="Just one tap to search"
           maxLength={50}
@@ -117,6 +117,7 @@ function NavbarView(props) {
             borderRadius: 100,
             paddingHorizontal: 20,
             height: 45,
+            backgroundColor: '#F9F9F9',
           }}
         />
         <View
@@ -133,7 +134,7 @@ function NavbarView(props) {
           <IoniconsIcon
             style={_styles.__icon}
             name="search-outline"
-            color="#fff"
+            color="#F9F9F9"
             size={22}
           />
         </View>
