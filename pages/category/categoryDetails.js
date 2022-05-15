@@ -12,6 +12,9 @@ import {
 import PropTypes from 'prop-types';
 import {Rating} from 'react-native-ratings';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import {Actions} from 'react-native-router-flux';
+import {useBackHandler} from '@react-native-community/hooks';
+
 import {MaterialCommunityIcon} from '../../components/Icons';
 
 import {NavbarView} from '../../components';
@@ -69,7 +72,11 @@ const _styles = StyleSheet.create({
 function CategoryDetails(props) {
   const {itemDetails} = props;
 
-  _renderSizeContainer = () => (
+  useBackHandler(() => {
+    Actions.pop();
+  });
+
+  const _renderSizeContainer = () => (
     <View
       style={{
         flexDirection: 'row',
@@ -94,7 +101,7 @@ function CategoryDetails(props) {
     </View>
   );
 
-  _renderItem = ({item}) => {
+  const _renderItem = ({item}) => {
     return (
       <Image
         style={_styles.__p_L_I}
@@ -110,22 +117,23 @@ function CategoryDetails(props) {
     <View style={{backgroundColor: '#F9F9F9', flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
         <NavbarView _isLogo={true} _isSearch={false} _isBackArrow={true} />
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, padding: 15}}>
           <View
             style={{
-              height: windowHeight / 1.9,
-              padding: 15,
+              height: 400,
+              // padding: 15,
               shadowColor: '#adadad',
               shadowOpacity: 0.2,
               shadowOffset: {width: 0, height: 5},
               shadowRadius: 3,
               elevation: 3,
               borderRadius: 7,
+              marginBottom: 15,
             }}>
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, borderRadius: 7}}>
               <AppIntroSlider
                 data={itemDetails?.images}
-                renderItem={this._renderItem}
+                renderItem={_renderItem}
               />
               {itemDetails?.productRemaining === 0 && (
                 <View
@@ -211,10 +219,12 @@ function CategoryDetails(props) {
             </TouchableOpacity>
           </View>
           <View
-            style={{
-              // flex: 0.5,
-              paddingHorizontal: 15,
-            }}>
+            style={
+              {
+                // flex: 0.5,
+                // paddingHorizontal: 15,
+              }
+            }>
             <View
               style={{
                 flex: 1,
@@ -301,7 +311,7 @@ function CategoryDetails(props) {
           <View
             style={{
               // flex: 0.5,
-              paddingHorizontal: 10,
+              // paddingHorizontal: 5,
               flexDirection: 'row',
               justifyContent: 'space-evenly',
             }}>
@@ -316,7 +326,7 @@ function CategoryDetails(props) {
                 elevation: 3,
                 borderRadius: 7,
                 marginBottom: 10,
-                width: windowWidth / 3 - 15,
+                width: windowWidth / 3 - 5,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -410,6 +420,7 @@ function CategoryDetails(props) {
             alignItems: 'center',
             justifyContent: 'space-evenly',
             paddingHorizontal: 15,
+            paddingVertical: 10,
           }}>
           <TouchableOpacity
             style={{

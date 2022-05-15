@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import {useBackHandler} from '@react-native-community/hooks';
+
 import {CategoryList} from '../pages/category';
 import {NavbarView, CardView, FilterCard, ModalView} from '../components';
 import categoryList from './jsonData/categoryList.json';
+import {Actions} from 'react-native-router-flux';
 
 function HomeScreen() {
   const DATA = categoryList;
@@ -17,11 +20,15 @@ function HomeScreen() {
 
   // const [showSort, updateSort] = useState(false);
 
-  _renderEachItem = ({item}) => {
+  useBackHandler(() => {
+    Actions.pop();
+  });
+
+  const _renderEachItem = ({item}) => {
     return <CardView itemDetails={item} />;
   };
 
-  updateSortFilterValue = value => {
+  const updateSortFilterValue = value => {
     // updateSort(value);
   };
 
@@ -62,6 +69,9 @@ function HomeScreen() {
       <SafeAreaView style={{flex: 1}}>
         <NavbarView _isLogo={true} _isSearch={true} _isBackArrow={false} />
         <CategoryList />
+        {/* <View style={{flex: 1}}>
+          <Text>Home page</Text>
+        </View> */}
       </SafeAreaView>
       {/* {showSort && sortFilter()} */}
     </View>
