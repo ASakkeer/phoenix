@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {Rating} from 'react-native-ratings';
+import AppIntroSlider from 'react-native-app-intro-slider';
 import {MaterialCommunityIcon} from '../../components/Icons';
 
 const windowWidth = Dimensions.get('window').width;
@@ -88,6 +89,18 @@ function CategoryDetails(props) {
     </View>
   );
 
+  _renderItem = ({item}) => {
+    return (
+      <Image
+        style={_styles.__p_L_I}
+        resizeMode="stretch"
+        source={{
+          uri: item?.url,
+        }}
+      />
+    );
+  };
+
   return (
     <View style={{backgroundColor: '#F9F9F9', flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
@@ -104,16 +117,36 @@ function CategoryDetails(props) {
               elevation: 3,
               borderRadius: 7,
             }}>
-            <Image
-              style={_styles.__p_L_I}
-              resizeMode="stretch"
-              source={{
-                uri:
-                  itemDetails?.images?.length > 0
-                    ? itemDetails?.images[0]?.url
-                    : null,
-              }}
-            />
+            <View style={{flex: 1}}>
+              <AppIntroSlider
+                data={itemDetails?.images}
+                renderItem={this._renderItem}
+              />
+              {itemDetails?.productRemaining === 0 && (
+                <View
+                  style={{
+                    position: 'absolute',
+                    right: 0,
+                    left: 0,
+                    height: windowHeight / 2,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#F9F9F9',
+                    opacity: 0.8,
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: 'red',
+                      fontWeight: 'bold',
+                      opacity: 0.5,
+                    }}>
+                    Out of stock
+                  </Text>
+                </View>
+              )}
+            </View>
+
             {!!itemDetails?.discount && (
               <View
                 style={{
