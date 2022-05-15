@@ -21,7 +21,7 @@ function HomeScreen() {
   };
 
   updateSortFilterValue = value => {
-    updateSort(value);
+    // updateSort(value);
   };
 
   // const sortFilter = () => (
