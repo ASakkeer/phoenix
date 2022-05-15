@@ -14,6 +14,12 @@ import {Rating} from 'react-native-ratings';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {MaterialCommunityIcon} from '../../components/Icons';
 
+import {NavbarView} from '../../components';
+
+import FastDelivery from '../../assets/images/fast-delivery.png';
+import EasyReturns from '../../assets/images/return.png';
+import CashOnDelivery from '../../assets/images/money.png';
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -59,7 +65,6 @@ const _styles = StyleSheet.create({
     paddingHorizontal: 7,
   },
 });
-import {NavbarView} from '../../components';
 
 function CategoryDetails(props) {
   const {itemDetails} = props;
@@ -258,8 +263,10 @@ function CategoryDetails(props) {
                     marginBottom: 10,
                     backgroundColor: '#03A651',
                     padding: 3,
-                    borderRadius: 100,
-                    width: 110,
+                    // borderRadius: 100,
+                    borderTopLeftRadius: 15,
+                    borderBottomRightRadius: 15,
+                    width: 130,
                     alignItems: 'center',
                   }}>
                   <Text style={{color: '#fff'}}>Free Delivery</Text>
@@ -289,6 +296,110 @@ function CategoryDetails(props) {
                   ({itemDetails?.customerRatingCount})
                 </Text>
               </View>
+            </View>
+          </View>
+          <View
+            style={{
+              // flex: 0.5,
+              paddingHorizontal: 10,
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+            }}>
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 15,
+                shadowColor: '#adadad',
+                shadowOpacity: 0.2,
+                shadowOffset: {width: 0, height: 0},
+                shadowRadius: 3,
+                elevation: 3,
+                borderRadius: 7,
+                marginBottom: 10,
+                width: windowWidth / 3 - 15,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                style={{
+                  width: 30,
+                  height: 30,
+                }}
+                resizeMode="stretch"
+                source={CashOnDelivery}
+              />
+              <Text
+                style={{
+                  color: '#4a6076',
+                  marginTop: 10,
+                  textAlign: 'center',
+                }}>
+                Cash on delivery
+              </Text>
+            </View>
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 15,
+                shadowColor: '#adadad',
+                shadowOpacity: 0.2,
+                shadowOffset: {width: 0, height: 0},
+                shadowRadius: 3,
+                elevation: 3,
+                borderRadius: 7,
+                marginBottom: 10,
+                width: windowWidth / 3 - 15,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                style={{
+                  width: 35,
+                  height: 35,
+                }}
+                resizeMode="stretch"
+                source={EasyReturns}
+              />
+              <Text
+                style={{
+                  color: '#4a6076',
+                  marginTop: 10,
+                  textAlign: 'center',
+                }}>
+                Easy returns
+              </Text>
+            </View>
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 15,
+                shadowColor: '#adadad',
+                shadowOpacity: 0.2,
+                shadowOffset: {width: 0, height: 0},
+                shadowRadius: 3,
+                elevation: 3,
+                borderRadius: 7,
+                marginBottom: 10,
+                width: windowWidth / 3 - 15,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                style={{
+                  width: 45,
+                  height: 45,
+                }}
+                resizeMode="stretch"
+                source={FastDelivery}
+              />
+              <Text
+                style={{
+                  color: '#4a6076',
+                  marginTop: 10,
+                  textAlign: 'center',
+                }}>
+                Super fast delivery
+              </Text>
             </View>
           </View>
         </ScrollView>

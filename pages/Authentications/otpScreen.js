@@ -15,6 +15,9 @@ import {
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
 import {Checkbox} from 'react-native-paper';
+
+import TTalk_W from '../../assets/images/TTalk_T.png';
+
 // import BackgoundImg from '../assets/images/BackgoundImg.png';
 // import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 // import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -109,10 +112,7 @@ class OtpScreen extends Component {
 
   render() {
     const {userNumber} = this.state;
-    const TTalk_W =
-      '/Users/viswa/work/testapps/phoenix/assets/images/TTalk_T.png';
-    const GoogleLogo =
-      '/Users/viswa/work/testapps/phoenix/assets/images/google-browser.png';
+
     return (
       <SafeAreaView style={[_styles.__e_S_C]}>
         <View style={[_styles.__e_S_C]}>
@@ -123,7 +123,7 @@ class OtpScreen extends Component {
               justifyContent: 'center',
             }}>
             <View style={_styles.__tS}>
-              <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
+              <Image style={_styles.__p_L_I} source={TTalk_W} />
             </View>
             <View>
               <Text style={{color: '#808080', fontSize: 14, marginTop: 20}}>

@@ -20,6 +20,8 @@ import {Checkbox} from 'react-native-paper';
 
 import {Actions} from 'react-native-router-flux';
 
+import backgroundImage from '../../assets/images/AuthBG.png';
+
 // import BackgoundImg from '../assets/images/BackgoundImg.png';
 // import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 // import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -73,16 +75,14 @@ class LoginScreen extends Component {
 
   render() {
     const {isFocused} = this.state;
-    const _backgroundImage = {
-      uri: '/Users/viswa/work/testapps/phoenix/assets/images/AuthBG.png',
-    };
+
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={_styles.flex}>
         <ScrollView contentContainerStyle={_styles.flex}>
           <ImageBackground
-            source={_backgroundImage}
+            source={backgroundImage}
             resizeMode="cover"
             style={_styles.flex}>
             <SafeAreaView style={_styles.flex}>

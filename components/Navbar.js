@@ -5,6 +5,9 @@ import {Actions} from 'react-native-router-flux';
 import {IoniconsIcon} from './Icons';
 import SearchInputView from './SearchInput';
 
+import AppLogo from '../assets/images/logo.png';
+import BackArrow from '../assets/images/left-arrow.png';
+
 const _styles = StyleSheet.create({
   __tS: {
     backgroundColor: '#F9F9F9',
@@ -43,10 +46,6 @@ const _styles = StyleSheet.create({
 
 function NavbarView(props) {
   const {_isLogo, _isSearch, _isBackArrow} = props;
-
-  const _logo = '/Users/viswa/work/testapps/phoenix/assets/images/logo.png';
-  const _backArrow =
-    '/Users/viswa/work/testapps/phoenix/assets/images/left-arrow.png';
 
   _renderIcons = (onPress, icon, size, color, style) => {
     return (
@@ -108,10 +107,10 @@ function NavbarView(props) {
                 zIndex: 1,
                 marginRight: 5,
               }}>
-              <Image style={_styles.__b_A} source={{uri: _backArrow}} />
+              <Image style={_styles.__b_A} source={BackArrow} />
             </TouchableOpacity>
           )}
-          {_isLogo && <Image style={_styles.__p_L_I} source={{uri: _logo}} />}
+          {_isLogo && <Image style={_styles.__p_L_I} source={AppLogo} />}
         </View>
         <View style={_styles.__centerAligned}>
           {_renderIcons(

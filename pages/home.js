@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import {CategoryList} from '../pages/category';
 import {NavbarView, CardView, FilterCard, ModalView} from '../components';
 import categoryList from './jsonData/categoryList.json';
 
@@ -60,23 +61,7 @@ function HomeScreen() {
     <View style={{backgroundColor: '#F9F9F9', flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
         <NavbarView _isLogo={true} _isSearch={true} _isBackArrow={false} />
-        <FilterCard updateSortFilterValue={updateSortFilterValue} />
-        <View style={{flex: 1}}>
-          <Text
-            style={{
-              fontSize: 16,
-              margin: 7,
-              fontWeight: 'bold',
-            }}>
-            Mens category
-          </Text>
-          <FlatList
-            data={DATA}
-            renderItem={_renderEachItem}
-            keyExtractor={(item, index) => index}
-            numColumns={2}
-          />
-        </View>
+        <CategoryList />
       </SafeAreaView>
       {/* {showSort && sortFilter()} */}
     </View>
