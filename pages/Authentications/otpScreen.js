@@ -15,6 +15,9 @@ import {
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
 import {Checkbox} from 'react-native-paper';
+
+import TTalk_W from '../../assets/images/TTalk_T.png';
+
 // import BackgoundImg from '../assets/images/BackgoundImg.png';
 // import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 // import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -31,14 +34,13 @@ import {Checkbox} from 'react-native-paper';
 // import ZocialIcon from 'react-native-vector-icons/Zocial';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
-// import {HeaderView} from '../components';
-// Basecolor : #500472   #500472
+// Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
   __e_S_C: {
     flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center',
-    // backgroundColor: '#500472',
+    // backgroundColor: '#4a6076',
   },
   __tS: {
     marginBottom: 15,
@@ -110,10 +112,7 @@ class OtpScreen extends Component {
 
   render() {
     const {userNumber} = this.state;
-    const TTalk_W =
-      '/Users/navinanda/work/application/phoenix/assets/images/TTalk_T.png';
-    const GoogleLogo =
-      '/Users/navinanda/work/application/phoenix/assets/images/google-browser.png';
+
     return (
       <SafeAreaView style={[_styles.__e_S_C]}>
         <View style={[_styles.__e_S_C]}>
@@ -124,13 +123,23 @@ class OtpScreen extends Component {
               justifyContent: 'center',
             }}>
             <View style={_styles.__tS}>
-              <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
+              <Image style={_styles.__p_L_I} source={TTalk_W} />
             </View>
             <View>
-            <Text style={{color: '#808080', fontSize: 14,marginTop:20,}}>Please enter the OTP send to </Text>
+              <Text style={{color: '#808080', fontSize: 14, marginTop: 20}}>
+                Please enter the OTP send to{' '}
+              </Text>
             </View>
             <View>
-            <Text style={{color: '#808080', fontSize: 14,marginTop:5,marginBottom:30}}>8870273579 . change</Text>
+              <Text
+                style={{
+                  color: '#808080',
+                  fontSize: 14,
+                  marginTop: 5,
+                  marginBottom: 30,
+                }}>
+                8870273579 . change
+              </Text>
             </View>
             <View>
               <TouchableWithoutFeedback
@@ -146,18 +155,16 @@ class OtpScreen extends Component {
                   />
                 </View>
               </TouchableWithoutFeedback>
-              
+
               <TouchableOpacity
                 style={{
                   alignItems: 'flex-end',
                   marginBottom: 15,
-                }}>
-               
-              </TouchableOpacity>
+                }}></TouchableOpacity>
               <View>
                 <TouchableOpacity
                   style={{
-                    backgroundColor: '#500472',
+                    backgroundColor: '#4a6076',
                     padding: 15,
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -169,18 +176,13 @@ class OtpScreen extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-            
-        
           </View>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
-           
-         
-          </View>
+            }}></View>
           {/*  <View style={_styles.__iC}>
           <TouchableWithoutFeedback
             onPress={Keyboard.dismiss}

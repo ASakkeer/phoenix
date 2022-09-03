@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {TextInput} from 'react-native';
 
-class TextInputView extends Component {
+class SearchInputView extends Component {
   constructor() {
     super();
   }
@@ -45,9 +45,9 @@ class TextInputView extends Component {
   }
 }
 
-export default TextInputView;
+export default SearchInputView;
 
-TextInputView.propTypes = {
+SearchInputView.propTypes = {
   style: PropTypes.object,
   autoCorrect: PropTypes.bool,
   autoFocus: PropTypes.bool,
@@ -64,7 +64,7 @@ TextInputView.propTypes = {
   secureTextEntry: PropTypes.bool,
 };
 
-TextInputView.defaultProps = {
+SearchInputView.defaultProps = {
   style: {},
   autoCorrect: false,
   autoFocus: false,

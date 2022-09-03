@@ -25,6 +25,7 @@ export default class ModalView extends Component {
       modalStyle,
       animationInTiming,
       animationOutTiming,
+      onModalShow,
     } = this.props;
 
     return (
@@ -45,6 +46,7 @@ export default class ModalView extends Component {
         onRequestClose={onRequestClose}
         animationInTiming={animationInTiming}
         animationOutTiming={animationOutTiming}
+        onModalShow={onModalShow}
         onSwipeComplete={onSwipeComplete}>
         {children}
       </Modal>
@@ -71,6 +73,7 @@ Modal.propTypes = {
   modalStyle: PropTypes.object,
   animationInTiming: PropTypes.number,
   animationOutTiming: PropTypes.number,
+  onModalShow: PropTypes.func,
 };
 
 Modal.defaultProps = {
@@ -92,4 +95,5 @@ Modal.defaultProps = {
   modalStyle: {margin: 0},
   animationInTiming: 300,
   animationOutTiming: 300,
+  onModalShow: () => {},
 };

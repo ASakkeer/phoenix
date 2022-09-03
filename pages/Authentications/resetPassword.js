@@ -7,14 +7,19 @@ import {
   Dimensions,
   Keyboard,
   TouchableWithoutFeedback,
-  Image,
+  ScrollView,
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
+  ImageBackground,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {TextInputView, Button} from '../../components';
 import {Checkbox} from 'react-native-paper';
+
+import {Actions} from 'react-native-router-flux';
+import backgroundImage from '../../assets/images/AuthBG.png';
 // import BackgoundImg from '../assets/images/BackgoundImg.png';
 // import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 // import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -31,72 +36,20 @@ import {Checkbox} from 'react-native-paper';
 // import ZocialIcon from 'react-native-vector-icons/Zocial';
 // import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
-// import {HeaderView} from '../components';
-// Basecolor : #500472   #500472
+// Basecolor : #4a6076   #4a6076
 const _styles = StyleSheet.create({
-  __e_S_C: {
+  flex: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: '#500472',
   },
-  __tS: {
-    marginBottom: 15,
-  },
-  __tT: {
-    fontSize: 40,
-    color: '#fff',
-  },
-  __sTS: {
-    marginBottom: 25,
-  },
-  __sTT: {
-    fontSize: 16,
-    width: Dimensions.get('window').width / 1.2,
-    alignItems: 'center',
+  titleContainer: {
+    alignItems: 'flex-end',
     justifyContent: 'center',
-    textAlign: 'center',
+    // borderWidth: 1,
+    padding: 15,
+  },
+  title: {
+    fontSize: Dimensions.get('window').width / 9,
     color: '#fff',
-  },
-  __tIC: {
-    // backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderColor: 'lightgrey',
-    paddingVertical: 15,
-    // paddingHorizontal: 15,
-    // fontSize: 18,
-    width: Dimensions.get('window').width / 1.2,
-    // borderRadius: 5,
-    color: 'grey',
-  },
-  __sBtn: {
-    width: Dimensions.get('window').width / 1.2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    borderColor: '#fff',
-    borderRadius: 5,
-  },
-  __SBtnT: {
-    fontSize: 18,
-    color: '#fff',
-  },
-  __iC: {
-    // marginBottom: 5,
-  },
-  __p_L_I: {
-    width: 200,
-    height: 50,
-    // borderRadius: 150,
-    // borderWidth: 5,
-    // borderColor: '#fff',
-  },
-  __sLg: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
   },
 });
 
@@ -104,106 +57,131 @@ class ResetPassword extends Component {
   constructor() {
     super();
     this.state = {
-      userNumber: '',
+      isFocused: false,
     };
   }
 
+  onFocusChange = () => {
+    console.log('fregerg');
+    this.setState({isFocused: true});
+  };
+
+  onBlurChange = () => {
+    console.log('fregerg');
+    this.setState({isFocused: false});
+  };
+
   render() {
-    const {userNumber} = this.state;
-    const TTalk_W =
-      '/Users/navinanda/work/application/phoenix/assets/images/TTalk_T.png';
-    const GoogleLogo =
-      '/Users/navinanda/work/application/phoenix/assets/images/google-browser.png';
+    const {isFocused} = this.state;
+
     return (
-      <SafeAreaView style={[_styles.__e_S_C]}>
-        <View style={[_styles.__e_S_C]}>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View style={_styles.__tS}>
-              <Image style={_styles.__p_L_I} source={{uri: TTalk_W}} />
-            </View>
-            <View>
-            <Text style={{color: '#500472', fontSize: 16,marginBottom:50,marginTop:20,}}>Reset Password</Text>
-            </View>
-            <View>
-              <TouchableWithoutFeedback
-                onPress={Keyboard.dismiss}
-                accessible={false}>
-                <View style={_styles.__sTS}>
-                  <TextInputView
-                    style={_styles.__tIC}
-                    placeholder="Phone or email"
-                    keyboardType="numeric"
-                    onChangeText={text => this.setState({userNumber: text})}
-                    placeholderTextColor="grey"
-                  />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={_styles.flex}>
+        <ScrollView contentContainerStyle={_styles.flex}>
+          <ImageBackground
+            source={backgroundImage}
+            resizeMode="cover"
+            style={_styles.flex}>
+            <SafeAreaView style={_styles.flex}>
+              <View style={_styles.flex}>
+                <View
+                  style={[
+                    _styles.titleContainer,
+                    {height: isFocused ? 100 : 300},
+                  ]}>
+                  <Text style={_styles.title}>Reset</Text>
+                  <Text style={_styles.title}>Password!</Text>
                 </View>
-              </TouchableWithoutFeedback>
-              
-              <TouchableOpacity
-                style={{
-                  alignItems: 'flex-end',
-                  marginBottom: 15,
-                }}>
-               
-              </TouchableOpacity>
-              <View>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: '#500472',
-                    padding: 15,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: Dimensions.get('window').width / 1.2,
-                    borderRadius: 10,
-                  }}>
-                  <Text style={{color: '#fff', fontSize: 16}}>Reset Password</Text>
-                </TouchableOpacity>
+                <View
+                  style={[
+                    _styles.flex,
+                    {
+                      paddingHorizontal: 20,
+                      paddingVertical: isFocused ? 0 : 50,
+                      justifyContent: isFocused ? 'center' : 'space-between',
+                    },
+                  ]}>
+                  <View>
+                    <View>
+                      <TextInputView
+                        placeholder="Email"
+                        maxLength={50}
+                        style={{
+                          paddingVertical: 20,
+                          marginBottom: 15,
+                          borderBottomWidth: 1,
+                          borderColor: 'lightgrey',
+                          fontSize: 16,
+                        }}
+                        onFocus={this.onFocusChange}
+                        onBlur={this.onBlurChange}
+                      />
+                    </View>
+                  </View>
+                  <View
+                    style={{
+                      position: 'absolute',
+                      bottom: isFocused ? 40 : 45,
+                      justifyContent: 'center',
+                      // borderWidth: 1,
+                      flex: 1,
+                      left: 0,
+                      right: 0,
+                      alignItems: 'flex-end',
+                      width: '38%',
+                      zIndex: 1,
+                    }}>
+                    <TouchableOpacity
+                      style={{alignItems: 'flex-start'}}
+                      onPress={() => Actions.Login()}>
+                      <Text
+                        style={{
+                          fontSize: isFocused ? 18 : 22,
+                          color: '#4a6076',
+                        }}>
+                        Login
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View
+                    style={{
+                      position: 'absolute',
+                      bottom: 15,
+                      justifyContent: 'center',
+                      // borderWidth: 1,
+                      flex: 1,
+                      left: 0,
+                      right: 0,
+                      alignItems: 'center',
+                    }}>
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: '#4a6076',
+                        padding: 20,
+                        borderRadius: 100,
+                        width: isFocused ? 70 : 80,
+                        height: isFocused ? 70 : 80,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        elevation: 1,
+                        shadowRadius: 2,
+                        shadowOpacity: 0.4,
+                        shadowColor: '#000',
+                        shadowOffset: {width: 3, height: 3},
+                      }}>
+                      <Text
+                        style={{fontSize: isFocused ? 20 : 26, color: '#fff'}}>
+                        GO
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
               </View>
-            </View>
-            
-        
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-           
-         
-          </View>
-          {/*  <View style={_styles.__iC}>
-          <TouchableWithoutFeedback
-            onPress={Keyboard.dismiss}
-            accessible={false}>
-            <View style={_styles.__sTS}>
-              <TextInputView
-                style={_styles.__tIC}
-                placeholder="Login with phone number"
-                keyboardType="numeric"
-                onChangeText={text => this.setState({userNumber: text})}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={_styles.__aC}>
-          <TouchableOpacity
-            style={_styles.__sBtn}
-            onPress={() => {
-              alert(userNumber);
-              Keyboard.dismiss();
-            }}>
-            <Text style={_styles.__SBtnT}>Sign in</Text>
-          </TouchableOpacity>
-        </View> */}
-        </View>
-      </SafeAreaView>
+            </SafeAreaView>
+          </ImageBackground>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

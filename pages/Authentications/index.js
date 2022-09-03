@@ -1,14 +1,8 @@
-import LoginScreen from "./login";
-import SignupScreen from "./signup";
-import ResetPassword from "./resetPassword";
-import OtpScreen from "./otpScreen";
+import LoginScreen from './login';
+import SignupScreen from './signup';
+import ResetPassword from './resetPassword';
+import OtpScreen from './otpScreen';
 
-ResetPassword
+ResetPassword;
 
-export {
-    LoginScreen,
-    SignupScreen,
-    ResetPassword,
-    OtpScreen
-
-}
+export {LoginScreen, SignupScreen, ResetPassword, OtpScreen};
